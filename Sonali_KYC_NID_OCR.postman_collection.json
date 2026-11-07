@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "sonali-kyc-nid-ocr-api-collection",
+		"name": "Sonali Intelligent KYC - NID OCR API",
+		"description": "Postman collection to test the Bangladeshi NID OCR and KYC Information Extraction API.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. API Info / Root",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						""
+					]
+				},
+				"description": "Check if API is up and running"
+			},
+			"response": []
+		},
+		{
+			"name": "2. Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/health",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"health"
+					]
+				},
+				"description": "Verify OCR service health status"
+			},
+			"response": []
+		},
+		{
+			"name": "3. Single NID OCR (Front or Back)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"description": "Upload Bangladeshi NID card image (JPG, PNG, WEBP)",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/nid/ocr",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"nid",
+						"ocr"
+					]
+				},
+				"description": "Upload a single Bangladeshi NID card image (Front or Back) to extract structured fields."
+			},
+			"response": []
+		},
+		{
+			"name": "4. Dual NID OCR (Front + Back Combined)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "front_file",
+							"description": "Upload Front side of Bangladeshi NID",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "back_file",
+							"description": "Upload Back side of Bangladeshi NID",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/nid/ocr/dual",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"nid",
+						"ocr",
+						"dual"
+					]
+				},
+				"description": "Upload both Front and Back sides of NID to get full merged Bank KYC profile."
+			},
+			"response": []
+		}
+	]
+}
