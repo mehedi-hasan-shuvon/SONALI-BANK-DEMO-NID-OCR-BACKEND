@@ -158,3 +158,7 @@ To test the entire pipeline without Postman:
 ```bash
 ./venv/bin/python test_api.py
 ```
+
+
+## RUN Locally
+./venv/bin/uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
